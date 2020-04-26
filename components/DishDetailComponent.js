@@ -18,8 +18,8 @@ function RenderDish(props) {
     return (
       <Card
         featuredTitle={dish.name}
-        image={{ uri: baseUrl + dish.image }}>
-        >
+        image={{ uri: baseUrl + dish.image }}
+      >
         <Text style={{ margin: 10 }}>{dish.description}</Text>
         <Icon
           raised
@@ -57,6 +57,10 @@ function RenderComments(props) {
   );
 }
 class DishDetail extends Component {
+  static navigationOptions = {
+    title: 'Menu'
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -66,9 +70,7 @@ class DishDetail extends Component {
   markFavorite(dishId) {
     this.setState({ favorites: this.state.favorites.concat(dishId) })
   }
-  static navigationOptions = {
-    title: 'Dish Details'
-  }
+
   render() {
     const dishId = this.props.navigation.getParam('dishId', '');
     return (
