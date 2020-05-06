@@ -27,7 +27,7 @@ function RenderDish(props) {
   var viewRef;
   const handleViewRef = ref => viewRef = ref;
 
-  const recognizeDrag = ({ moveX, moveY, dx, dy }) => {
+  const recognizeLike = ({ dx }) => {
     if (dx < -200)
       return true;
     else
@@ -35,7 +35,7 @@ function RenderDish(props) {
   };
   const recognizeComment = ({ dx }) => {
     if (dx > 200) return true;
-    return false;
+    else return false;
   };
 
   const panResponder = PanResponder.create({
@@ -48,7 +48,7 @@ function RenderDish(props) {
     },
     onPanResponderEnd: (e, gestureState) => {
       console.log("pan responder end", gestureState);
-      if (recognizeDrag(gestureState)) {
+      if (recognizeLike(gestureState)) {
         Alert.alert(
           'Add Favorite',
           'Are you sure you wish to add ' + dish.name + ' to favorite?',
